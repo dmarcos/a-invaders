@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cube</title>
+    <meta name="description" content="Cube — A-Frame Core">
+    <script src="js/aframe-core.js"></script>
+    <script src="js/components/spawner.js"></script>
+    <script src="js/components/laser-behavior.js"></script>
+    <script src="js/components/collider.js"></script>
+    <script src="js/components/explode.js"></script>
+    <style>
+      body { background-color: black; }
+
+      .screen {
+        position: relative;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+        text-align: center;
+        padding-top: 15%;
+        color: white;
+        font-family: monospace; 
+      }
+
+      .end-screen {
+        display: none;
+      }
+
+      .title {
+        font-weight: bold;
+        font-size: 110px;
+        text-shadow: 1px 1px #ef2d5e, 
+                     2px 2px #ef2d5e, 
+                     3px 3px #ef2d5e;
+
+      }
+
+      .start, .end {
+         font-weight: bold;
+         margin-top: 45px;
+         font-size: 35px;
+      }
+
+      .instructions {
+         margin-top: 45px;
+         font-size: 20px;
+      }
+
+      .blink {
+        animation: blink 2.5s linear infinite;
+      }
+
+      @keyframes blink {  
+        0% { opacity: 0.0; }
+        50% { opacity: 1.0; }
+        100% { opacity: 0.0; }
+      }
+
+      .score {
+        color: white;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-family: monospace;
+        font-size: 20px;
+        z-index: 99999;
+      }
+
+      .end a {
+        color: #ef2d5e;
+        text-decoration: none;
+      }
+
+      .end a::hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <a-assets>
+      <a-mixin id="cube"
+               geometry="primitive: box; height: 2; width: 2; depth: 2;"
+               material="color: #167341; roughness: 1.0; metalness: 0.2;"></a-mixin>
+      <a-mixin id="laser"
+               geometry="primitive: box; height: 2; width: 0.1; depth: 0.1"
+               material="color: yellow;"
+               laser-behavior collider></a-mixin>
+      <a-mixin id="enemy" explode="on: hit"></a-mixin>
+    </a-assets>
+    <div class="score">Score: 0</div>
+    <div class="screen title-screen">
+      <div class="title">A-INVADERS</div>
+      <div class="start blink">Click to Start</div>
+      <div class="instructions">AD keys to move and click to shoot</div>
+    </div>
+    <div class="screen end-screen">
+      <div class="end">Congratulations you saved the world!</div>
+      <div class="end">Made with <a href="http://www.aframevr.io">A-FRAME</a></div>
+    </div>
+    <a-scene stats="false">
+      <a-entity position="0 0 20">
+        <a-entity camera="fov: 45"></a-entity>
+      </a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="-17.5 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="-14 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="-10.5 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="-7 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="-3.5 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="0 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="3.5 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="7 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="10.5 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="14 5 -10"></a-entity>
+      <a-entity mixin="cube enemy" material="color: red" position="17.5 5 -10"></a-entity>
+      <!-- Cube -->
+      <a-entity mixin="cube"
+                wasd-controls="ws-axis: y; as-inverted: true; acceleration: 400; wsEnabled: false"
+                position="0 -10 -10"
+                spawner="mixin: laser; on: mousedown"
+                cursor></a-entity>
+    </a-scene>
+    <script>
+      var titleEl = document.querySelector('.title-screen');
+      var endEl = document.querySelector('.end-screen');
+      var enemies = document.querySelectorAll('[mixin="cube enemy"]');
+      var deadEnemies = [];
+      var scoreEl = document.querySelector('.score');
+      var score = 0;
+      var increaseCounter = function(e) {
+        var enemy = e.currentTarget;
+        if (deadEnemies.indexOf(enemy) != -1) { return; }
+        deadEnemies.push(enemy);
+        score+=1;
+        scoreEl.innerHTML = 'Score: ' + score;
+        if (enemies.length === deadEnemies.length) {
+          endEl.style.display = 'block';
+        }
+      }
+      titleEl.addEventListener('click', function() { titleEl.style.display = 'none'; });
+      enemies = Array.prototype.slice.call(enemies);
+      enemies.forEach(function(enemyEl) {
+        enemyEl.addEventListener('hit', increaseCounter);
+      });
+    </script>
+  </body>
+</html>

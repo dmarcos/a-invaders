@@ -1,0 +1,22 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'build' ]
+2 info using npm@3.3.12
+3 info using node@v5.3.0
+4 verbose stack Error: ENOENT: no such file or directory, open 'C:\cygwin64\home\diego\Development\VR\a-invaders\package.json'
+4 verbose stack     at Error (native)
+5 verbose cwd C:\cygwin64\home\diego\Development\VR\a-invaders
+6 error Windows_NT 10.0.10586
+7 error argv "C:\\Program Files (x86)\\nodejs\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "build"
+8 error node v5.3.0
+9 error npm  v3.3.12
+10 error path C:\cygwin64\home\diego\Development\VR\a-invaders\package.json
+11 error code ENOENT
+12 error errno -4058
+13 error syscall open
+14 error enoent ENOENT: no such file or directory, open 'C:\cygwin64\home\diego\Development\VR\a-invaders\package.json'
+14 error enoent This is most likely not a problem with npm itself
+14 error enoent and is related to npm not being able to find a file.
+15 verbose exit [ -4058, true ]
