@@ -1,5 +1,3 @@
-# A-Invaders
+# A-INVADERS
 
-[DEMO](http://swimminglessonsformodernlife.com/a-invaders/) 
-
-Made with [A-FRAME](http://www.aframevr.io)
+[DEMO](http://swimminglessonsformodernlife.com/a-invaders/) - made with [A-FRAME](http://www.aframevr.io)
