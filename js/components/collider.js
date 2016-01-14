@@ -1,4 +1,6 @@
 AFRAME.registerComponent('collider', {
+  schema: {},
+
   init: function() {
     this.el.sceneEl.addBehavior(this);
   },

@@ -1,4 +1,9 @@
 AFRAME.registerComponent('spawner', {
+  schema: {
+    on: { default: 'click' },
+    mixin: { default: '' }
+  },
+
   update: function () {
     var el = this.el;
     var spawn = this.spawn.bind(this);

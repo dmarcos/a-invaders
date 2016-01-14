@@ -1,4 +1,6 @@
 AFRAME.registerComponent('explode', {
+  schema: { on: { default: ''} },
+
   update: function (previousData) {
     var el = this.el;
     var explode = this.handler = this.explode.bind(this);
