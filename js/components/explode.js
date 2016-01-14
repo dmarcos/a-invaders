@@ -11,7 +11,7 @@ AFRAME.registerComponent('explode', {
   },
 
   explode: function () {
-    var object3D = this.el.object3D;
+    var object3D = this.el.getObject3D('mesh');
     var scene = this.el.sceneEl.object3D;
     var duration = 8000;
 

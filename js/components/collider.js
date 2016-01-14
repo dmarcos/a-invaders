@@ -7,10 +7,11 @@ AFRAME.registerComponent('collider', {
 
   update: function () {
     var sceneEl = this.el.sceneEl;
-    var object3D = this.el.object3D;
-    var originPoint = object3D.position.clone();
-    for (var vertexIndex = 0; vertexIndex < object3D.geometry.vertices.length; vertexIndex++) {
-      var localVertex = object3D.geometry.vertices[vertexIndex].clone();
+    var mesh = this.el.getObject3D('mesh');
+    var object3D = this.el.object3D
+    var originPoint = this.el.object3D.position.clone();
+    for (var vertexIndex = 0; vertexIndex < mesh.geometry.vertices.length; vertexIndex++) {
+      var localVertex = mesh.geometry.vertices[vertexIndex].clone();
       var globalVertex = localVertex.applyMatrix4( object3D.matrix );
       var directionVector = globalVertex.sub( object3D.position );
 
