@@ -1,0 +1,66 @@
+body {
+  background-color: black;
+}
+
+.screen {
+  position: relative;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  text-align: center;
+  padding-top: 15%;
+  color: white;
+  font-family: monospace;
+}
+
+.end-screen {
+  display: none;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 110px;
+  text-shadow: 1px 1px #ef2d5e,
+               2px 2px #ef2d5e,
+               3px 3px #ef2d5e;
+}
+
+.start, .end {
+  font-weight: bold;
+  margin-top: 45px;
+  font-size: 35px;
+}
+
+.instructions {
+  margin-top: 45px;
+  font-size: 20px;
+}
+
+.blink {
+  animation: blink 2.5s linear infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 0.0; }
+  50% { opacity: 1.0; }
+  100% { opacity: 0.0; }
+}
+
+.score {
+  color: white;
+  position: fixed;
+  top: 10px;
+  font-family: monospace;
+  font-size: 20px;
+  z-index: 99999;
+}
+
+.end a {
+  color: #ef2d5e;
+  text-decoration: none;
+}
+
+.end a::hover {
+  text-decoration: underline;
+}
