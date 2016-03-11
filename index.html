@@ -79,16 +79,6 @@
     </style>
   </head>
   <body>
-    <a-assets>
-      <a-mixin id="cube"
-               geometry="primitive: box; height: 2; width: 2; depth: 2;"
-               material="color: #167341; roughness: 1.0; metalness: 0.2;"></a-mixin>
-      <a-mixin id="laser"
-               geometry="primitive: box; height: 2; width: 0.1; depth: 0.1"
-               material="color: yellow;"
-               laser-behavior collider></a-mixin>
-      <a-mixin id="enemy" explode="on: hit"></a-mixin>
-    </a-assets>
     <div class="score">Score: 0</div>
     <div class="screen title-screen">
       <div class="title">A-INVADERS</div>
@@ -100,6 +90,16 @@
       <div class="end">Made with <a href="http://www.aframevr.io">A-FRAME</a></div>
     </div>
     <a-scene stats="false">
+      <a-assets>
+        <a-mixin id="cube"
+                 geometry="primitive: box; height: 2; width: 2; depth: 2;"
+                 material="color: #167341; roughness: 1.0; metalness: 0.2;"></a-mixin>
+        <a-mixin id="laser"
+                 geometry="primitive: box; height: 2; width: 0.1; depth: 0.1"
+                 material="color: yellow;"
+                 laser-behavior collider></a-mixin>
+        <a-mixin id="enemy" explode="on: hit"></a-mixin>
+      </a-assets>
       <a-entity position="0 0 20">
         <a-entity camera="fov: 45"></a-entity>
       </a-entity>
@@ -116,7 +116,7 @@
       <a-entity mixin="cube enemy" material="color: red" position="17.5 5 -10"></a-entity>
       <!-- Cube -->
       <a-entity mixin="cube"
-                wasd-controls="ws-axis: y; as-inverted: true; acceleration: 400; wsEnabled: false"
+                wasd-controls="acceleration: 400; wsEnabled: false"
                 position="0 -10 -10"
                 spawner="mixin: laser; on: mousedown"
                 cursor></a-entity>

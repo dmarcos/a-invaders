@@ -16,7 +16,7 @@ AFRAME.registerComponent('collider', {
       var directionVector = globalVertex.sub( object3D.position );
 
       var ray = new THREE.Raycaster( originPoint, directionVector.clone().normalize() );
-      var collisionResults = ray.intersectObjects( sceneEl.object3D.children );
+      var collisionResults = ray.intersectObjects( sceneEl.object3D.children, true );
       collisionResults.forEach(hit);
     }
     function hit(collision) {
@@ -24,7 +24,8 @@ AFRAME.registerComponent('collider', {
         return;
       }
       if (collision.distance < directionVector.length()) {
-        collision.object.el.emit('hit');
+        if (!collision.object.el) { return; }
+        collision.object.el.emit('hit'); 
       }
     }
   }
