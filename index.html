@@ -25,10 +25,10 @@
     <a-scene stats="false">
       <a-assets>
         <a-mixin id="cube"
-                 geometry="primitive: box; height: 2; width: 2; depth: 2;"
+                 geometry="primitive: box; buffer: false; height: 2; width: 2; depth: 2;"
                  material="color: #167341; roughness: 1.0; metalness: 0.2;"></a-mixin>
         <a-mixin id="laser"
-                 geometry="primitive: box; height: 2; width: 0.1; depth: 0.1"
+                 geometry="primitive: box; buffer: false; height: 2; width: 0.1; depth: 0.1"
                  material="color: yellow;"
                  laser-behavior collider></a-mixin>
         <a-mixin id="enemy" explode="on: hit"></a-mixin>

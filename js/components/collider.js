@@ -2,9 +2,10 @@ AFRAME.registerComponent('collider', {
   schema: {},
 
   init: function() {
+    this.el.sceneEl.addBehavior(this);
   },
 
-  update: function () {
+  tick: function () {
     var sceneEl = this.el.sceneEl;
     var mesh = this.el.getObject3D('mesh');
     var object3D = this.el.object3D

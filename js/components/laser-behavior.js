@@ -4,9 +4,10 @@ AFRAME.registerComponent('laser-behavior', {
   },
 
   init: function () {
+    this.el.sceneEl.addBehavior(this);
   },
 
-  update: function () {
+  tick: function () {
     var object3D = this.el.object3D;
     object3D.translateY(this.data.speed);
   }

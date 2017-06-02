@@ -22,5 +22,5 @@ AFRAME.registerComponent('spawner', {
     entity.setAttribute('position', position);
     entity.setAttribute('mixin', this.data.mixin);
     el.sceneEl.appendChild(entity);
-  }
+  },
 });
