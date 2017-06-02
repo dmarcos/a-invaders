@@ -2,7 +2,6 @@ AFRAME.registerComponent('collider', {
   schema: {},
 
   init: function() {
-    this.el.sceneEl.addBehavior(this);
   },
 
   update: function () {
@@ -25,7 +24,7 @@ AFRAME.registerComponent('collider', {
       }
       if (collision.distance < directionVector.length()) {
         if (!collision.object.el) { return; }
-        collision.object.el.emit('hit'); 
+        collision.object.el.emit('hit');
       }
     }
   }

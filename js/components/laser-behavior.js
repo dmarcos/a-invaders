@@ -4,7 +4,6 @@ AFRAME.registerComponent('laser-behavior', {
   },
 
   init: function () {
-    this.el.sceneEl.addBehavior(this);
   },
 
   update: function () {
